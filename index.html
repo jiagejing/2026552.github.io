@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人作品集 | 图书编辑 & 内容策划</title>
+  <!-- 引入Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 引入Font Awesome图标 -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- 引入Lightbox图片预览 -->
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet">
+  
+  <!-- Tailwind配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1a1a1a',     // 主黑
+            secondary: '#f5f2ed',   // 米色背景
+            neutral: '#8c8c8c',     // 中性灰
+            light: '#e5e5e5'        // 浅灰
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],  // 标题衬线字体
+            sans: ['Inter', 'sans-serif']          // 正文无衬线字体
+          },
+        },
+      }
+    }
+  </script>
+  
+  <!-- 自定义样式 -->
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-editorial {
+        letter-spacing: 0.02em;
+        line-height: 1.7;
+      }
+      .card-hover {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-4px);
+        opacity: 0.9;
+      }
+      .section-fade {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .section-fade.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+  
+  <!-- 引入字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-white text-primary font-sans text-editorial">
+  <!-- 导航栏 -->
+  <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-sm">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="#home" class="font-serif text-xl md:text-2xl font-medium">Editor</a>
+      
+      <!-- 移动端菜单按钮 -->
+      <button id="menuBtn" class="md:hidden text-primary">
+        <i class="fa fa-bars text-xl"></i>
+      </button>
+      
+      <!-- 桌面端导航 -->
+      <div class="hidden md:flex space-x-8">
+        <a href="#home" class="text-sm hover:text-neutral transition-colors">首页</a>
+        <a href="#about" class="text-sm hover:text-neutral transition-colors">关于我</a>
+        <a href="#books" class="text-sm hover:text-neutral transition-colors">图书项目</a>
+        <a href="#writing" class="text-sm hover:text-neutral transition-colors">文案内容</a>
+        <a href="#design" class="text-sm hover:text-neutral transition-colors">设计作品</a>
+        <a href="#projects" class="text-sm hover:text-neutral transition-colors">项目活动</a>
+        <a href="#contact" class="text-sm hover:text-neutral transition-colors">联系我</a>
+      </div>
+    </div>
+    
+    <!-- 移动端菜单 -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-light">
+      <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+        <a href="#home" class="text-sm py-2 hover:text-neutral transition-colors">首页</a>
+        <a href="#about" class="text-sm py-2 hover:text-neutral transition-colors">关于我</a>
+        <a href="#books" class="text-sm py-2 hover:text-neutral transition-colors">图书项目</a>
+        <a href="#writing" class="text-sm py-2 hover:text-neutral transition-colors">文案内容</a>
+        <a href="#design" class="text-sm py-2 hover:text-neutral transition-colors">设计作品</a>
+        <a href="#projects" class="text-sm py-2 hover:text-neutral transition-colors">项目活动</a>
+        <a href="#contact" class="text-sm py-2 hover:text-neutral transition-colors">联系我</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 1. 首页 -->
+  <section id="home" class="min-h-screen flex flex-col justify-center pt-20 pb-16 px-4">
+    <div class="container mx-auto max-w-5xl">
+      <!-- 顶部大图 -->
+      <div class="w-full h-[60vh] md:h-[70vh] bg-secondary mb-12 overflow-hidden">
+        <img src="https://picsum.photos/id/1072/1600/900" alt="书籍阅读氛围图" class="w-full h-full object-cover opacity-90">
+      </div>
+      
+      <!-- 个人信息 -->
+      <div class="text-center mb-16 section-fade">
+        <h1 class="font-serif text-3xl md:text-5xl font-normal mb-4">林 知</h1>
+        <p class="text-neutral text-lg md:text-xl mb-6">图书编辑 / 内容策划 / 出版营销</p>
+        <p class="text-lg md:text-xl max-w-2xl mx-auto">我做书，也让书被看见</p>
+      </div>
+      
+      <!-- 代表项目 -->
+      <div class="section-fade">
+        <h2 class="font-serif text-2xl mb-8 text-center">代表项目</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- 项目1 -->
+          <div class="card-hover">
+            <div class="bg-secondary aspect-[3/4] mb-4 overflow-hidden">
+              <img src="https://picsum.photos/id/24/600/800" alt="图书封面" class="w-full h-full object-cover">
+            </div>
+            <h3 class="font-serif text-lg mb-1">时间的秩序</h3>
+            <p class="text-sm text-neutral mb-2">科普哲学类图书编辑与全案营销</p>
+            <span class="text-xs px-2 py-1 bg-secondary inline-block">编辑 / 营销</span>
+          </div>
+          
+          <!-- 项目2 -->
+          <div class="card-hover">
+            <div class="bg-secondary aspect-[3/4] mb-4 overflow-hidden">
+              <img src="https://picsum.photos/id/20/600/800" alt="图书封面" class="w-full h-full object-cover">
+            </div>
+            <h3 class="font-serif text-lg mb-1">沉默的大多数</h3>
+            <p class="text-sm text-neutral mb-2">文学类图书再版策划与视觉设计</p>
+            <span class="text-xs px-2 py-1 bg-secondary inline-block">策划 / 设计</span>
+          </div>
+          
+          <!-- 项目3 -->
+          <div class="card-hover">
+            <div class="bg-secondary aspect-[3/4] mb-4 overflow-hidden">
+              <img src="https://picsum.photos/id/13/600/800" alt="图书封面" class="w-full h-full object-cover">
+            </div>
+            <h3 class="font-serif text-lg mb-1">心灵旷野</h3>
+            <p class="text-sm text-neutral mb-2">心理学图书编辑与线下活动策划</p>
+            <span class="text-xs px-2 py-1 bg-secondary inline-block">编辑 / 活动</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 关于我 -->
+  <section id="about" class="py-20 px-4 bg-secondary">
+    <div class="container mx-auto max-w-5xl section-fade">
+      <h2 class="font-serif text-2xl mb-12 text-center">关于我</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <!-- 左侧照片 -->
+        <div class="aspect-[3/4] bg-white overflow-hidden">
+          <img src="https://picsum.photos/id/64/800/1000" alt="个人照片" class="w-full h-full object-cover">
+        </div>
+        
+        <!-- 右侧自述 -->
+        <div>
+          <p class="mb-6">我是一名专注于文学、哲学与心理领域的图书编辑，深耕出版行业多年，始终以严谨、克制的态度对待每一本书的诞生。</p>
+          
+          <p class="mb-6">我相信，编辑不仅是文字的打磨者，更是书籍与读者之间的桥梁。从选题策划、文字编辑到营销传播，我致力于让每一本好书，以最恰当的方式被看见、被阅读、被记住。</p>
+          
+          <p class="mb-8">做书的本质，是传递思想与温度。我坚持用专业的判断力，筛选内容、打磨文字、塑造形态，让书籍成为有灵魂的载体。</p>
+          
+          <!-- 技能标签 -->
+          <h3 class="font-serif text-lg mb-4">专业能力</h3>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="text-xs px-3 py-1 bg-white border border-light">图书编辑（文学/哲学/心理）</span>
+            <span class="text-xs px-3 py-1 bg-white border border-light">线下活动策划</span>
+            <span class="text-xs px-3 py-1 bg-white border border-light">图书市集/分享会</span>
+            <span class="text-xs px-3 py-1 bg-white border border-light">营销与传播</span>
+            <span class="text-xs px-3 py-1 bg-white border border-light">公众号/小红书内容</span>
+            <span class="text-xs px-3 py-1 bg-white border border-light">视觉设计（海报/文创）</span>
+            <span class="text-xs px-3 py-1 bg-white border border-light">摄影与视频剪辑</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 图书项目 -->
+  <section id="books" class="py-20 px-4">
+    <div class="container mx-auto max-w-5xl section-fade">
+      <h2 class="font-serif text-2xl mb-12 text-center">图书项目</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 项目1 -->
+        <div class="card-hover">
+          <div class="bg-secondary aspect-[3/4] mb-4 overflow-hidden">
+            <img src="https://picsum.photos/id/24/600/800" alt="时间的秩序" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-serif text-lg mb-1">时间的秩序</h3>
+          <p class="text-sm text-neutral mb-2">责任编辑 | 全案营销</p>
+          <p class="text-sm mb-4">一本重新定义我们对时间认知的科普哲学著作，从物理学到哲学，打破常规认知边界。</p>
+          <button class="text-xs border border-primary px-3 py-1 hover:bg-primary hover:text-white transition-colors">查看详情</button>
+        </div>
+        
+        <!-- 项目2 -->
+        <div class="card-hover">
+          <div class="bg-secondary aspect-[3/4] mb-4 overflow-hidden">
+            <img src="https://picsum.photos/id/20/600/800" alt="沉默的大多数" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-serif text-lg mb-1">沉默的大多数</h3>
+          <p class="text-sm text-neutral mb-2">策划编辑 | 视觉设计</p>
+          <p class="text-sm mb-4">经典文学作品再版项目，重新梳理文本结构，全新视觉设计，唤醒当代读者的思考与共鸣。</p>
+          <button class="text-xs border border-primary px-3 py-1 hover:bg-primary hover:text-white transition-colors">查看详情</button>
+        </div>
+        
+        <!-- 项目3 -->
+        <div class="card-hover">
+          <div class="bg-secondary aspect-[3/4] mb-4 overflow-hidden">
+            <img src="https://picsum.photos/id/13/600/800" alt="心灵旷野" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-serif text-lg mb-1">心灵旷野</h3>
+          <p class="text-sm text-neutral mb-2">责任编辑 | 活动策划</p>
+          <p class="text-sm mb-4">心理学大众读物，聚焦当代人的精神内耗与自我疗愈，上线即登上心理类图书榜单。</p>
+          <button class="text-xs border border-primary px-3 py-1 hover:bg-primary hover:text-white transition-colors">查看详情</button>
+        </div>
+        
+        <!-- 项目4 -->
+        <div class="card-hover">
+          <div class="bg-secondary aspect-[3/4] mb-4 overflow-hidden">
+            <img src="https://picsum.photos/id/1/600/800" alt="城市漫步" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-serif text-lg mb-1">城市漫步</h3>
+          <p class="text-sm text-neutral mb-2">策划 | 编辑 | 营销</p>
+          <p class="text-sm mb-4">人文纪实类图书，记录城市角落的故事与温度，打造沉浸式阅读体验。</p>
+          <button class="text-xs border border-primary px-3 py-1 hover:bg-primary hover:text-white transition-colors">查看详情</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 文案与内容 -->
+  <section id="writing" class="py-20 px-4 bg-secondary">
+    <div class="container mx-auto max-w-5xl section-fade">
+      <h2 class="font-serif text-2xl mb-12 text-center">文案与内容</h2>
+      
+      <div class="space-y-8">
+        <!-- 文案1 -->
+        <div class="bg-white p-6 hover:shadow-sm transition-shadow">
+          <h3 class="font-serif text-lg mb-2">如何让一本社科书，走进大众视野</h3>
+          <p class="text-sm text-neutral mb-3">图书营销文案 | 公众号推文</p>
+          <p class="text-sm mb-4">拆解社科类图书的营销逻辑，从读者痛点出发，打造高传播度的内容策略，让专业书籍不再小众。</p>
+          <button class="text-xs text-primary hover:underline">展开全文</button>
+        </div>
+        
+        <!-- 文案2 -->
+        <div class="bg-white p-6 hover:shadow-sm transition-shadow">
+          <h3 class="font-serif text-lg mb-2">编辑手记：一本书的诞生，是一场漫长的打磨</h3>
+          <p class="text-sm text-neutral mb-3">编辑类写作 | 出版随笔</p>
+          <p class="text-sm mb-4">记录从选题到成书的全过程，文字校对、内容打磨、版式设计，每一个细节都是对读者的尊重。</p>
+          <button class="text-xs text-primary hover:underline">展开全文</button>
+        </div>
+        
+        <!-- 文案3 -->
+        <div class="bg-white p-6 hover:shadow-sm transition-shadow">
+          <h3 class="font-serif text-lg mb-2">10本治愈系心理图书，告别精神内耗</h3>
+          <p class="text-sm text-neutral mb-3">书单策划 | 小红书内容</p>
+          <p class="text-sm mb-4">精选治愈系心理图书，结合当代年轻人的生活状态，打造高互动书单，收获10w+阅读。</p>
+          <button class="text-xs text-primary hover:underline">展开全文</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 设计作品 -->
+  <section id="design" class="py-20 px-4">
+    <div class="container mx-auto max-w-5xl section-fade">
+      <h2 class="font-serif text-2xl mb-12 text-center">设计作品</h2>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <a href="https://picsum.photos/id/62/1200/800" data-lightbox="design" data-title="图书宣传海报" class="block aspect-[4/3] bg-secondary overflow-hidden card-hover">
+          <img src="https://picsum.photos/id/62/800/600" alt="海报设计" class="w-full h-full object-cover">
+        </a>
+        <a href="https://picsum.photos/id/239/1200/800" data-lightbox="design" data-title="文创藏书票" class="block aspect-[4/3] bg-secondary overflow-hidden card-hover">
+          <img src="https://picsum.photos/id/239/800/600" alt="文创设计" class="w-full h-full object-cover">
+        </a>
+        <a href="https://picsum.photos/id/175/1200/800" data-lightbox="design" data-title="书目宣传册" class="block aspect-[4/3] bg-secondary overflow-hidden card-hover">
+          <img src="https://picsum.photos/id/175/800/600" alt="物料设计" class="w-full h-full object-cover">
+        </a>
+        <a href="https://picsum.photos/id/36/1200/800" data-lightbox="design" data-title="活动海报" class="block aspect-[4/3] bg-secondary overflow-hidden card-hover">
+          <img src="https://picsum.photos/id/36/800/600" alt="活动海报" class="w-full h-full object-cover">
+        </a>
+        <a href="https://picsum.photos/id/136/1200/800" data-lightbox="design" data-title="纪念小卡" class="block aspect-[4/3] bg-secondary overflow-hidden card-hover">
+          <img src="https://picsum.photos/id/136/800/600" alt="小卡设计" class="w-full h-full object-cover">
+        </a>
+        <a href="https://picsum.photos/id/174/1200/800" data-lightbox="design" data-title="广告页设计" class="block aspect-[4/3] bg-secondary overflow-hidden card-hover">
+          <img src="https://picsum.photos/id/174/800/600" alt="广告页设计" class="w-full h-full object-cover">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 项目与活动 -->
+  <section id="projects" class="py-20 px-4 bg-secondary">
+    <div class="container mx-auto max-w-5xl section-fade">
+      <h2 class="font-serif text-2xl mb-12 text-center">项目与活动</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- 活动1 -->
+        <div class="card-hover">
+          <div class="h-48 bg-white mb-4 overflow-hidden">
+            <img src="https://picsum.photos/id/111/800/500" alt="图书市集" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-serif text-lg mb-1">城市图书市集</h3>
+          <p class="text-sm mb-2">独立出版人联合市集，汇聚20+出版品牌</p>
+          <p class="text-xs text-neutral">职责：整体策划 / 视觉设计 / 现场执行</p>
+        </div>
+        
+        <!-- 活动2 -->
+        <div class="card-hover">
+          <div class="h-48 bg-white mb-4 overflow-hidden">
+            <img src="https://picsum.photos/id/119/800/500" alt="新书分享会" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-serif text-lg mb-1">新书分享会</h3>
+          <p class="text-sm mb-2">作者面对面，与读者深度交流创作背后的故事</p>
+          <p class="text-xs text-neutral">职责：流程策划 / 主持 / 宣传物料</p>
+        </div>
+        
+        <!-- 活动3 -->
+        <div class="card-hover">
+          <div class="h-48 bg-white mb-4 overflow-hidden">
+            <img src="https://picsum.photos/id/160/800/500" alt="书店布展" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-serif text-lg mb-1">独立书店主题展</h3>
+          <p class="text-sm mb-2">文学主题书籍陈列，打造沉浸式阅读空间</p>
+          <p class="text-xs text-neutral">职责：创意设计 / 现场布展 / 内容策划</p>
+        </div>
+        
+        <!-- 活动4 -->
+        <div class="card-hover">
+          <div class="h-48 bg-white mb-4 overflow-hidden">
+            <img src="https://picsum.photos/id/180/800/500" alt="编辑分享会" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-serif text-lg mb-1">编辑分享沙龙</h3>
+          <p class="text-sm mb-2">揭秘图书编辑工作，分享做书心得与行业观察</p>
+          <p class="text-xs text-neutral">职责：主讲 / 内容策划 / 流程执行</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. 联系方式 -->
+  <section id="contact" class="py-20 px-4">
+    <div class="container mx-auto max-w-3xl text-center section-fade">
+      <h2 class="font-serif text-2xl mb-8">联系我</h2>
+      
+      <div class="space-y-6 mb-12">
+        <p class="text-lg">期待与热爱出版与内容的你交流合作</p>
+        <p class="text-neutral">邮箱：editor@example.com</p>
+        <p class="text-neutral">小红书：@图书编辑林知</p>
+      </div>
+      
+      <!-- 联系表单 -->
+      <div class="max-w-md mx-auto">
+        <input type="text" placeholder="你的姓名" class="w-full px-4 py-2 mb-4 border border-light focus:outline-none focus:border-primary">
+        <input type="email" placeholder="你的邮箱" class="w-full px-4 py-2 mb-4 border border-light focus:outline-none focus:border-primary">
+        <textarea placeholder="留言内容" rows="4" class="w-full px-4 py-2 mb-6 border border-light focus:outline-none focus:border-primary"></textarea>
+        <button class="border border-primary px-6 py-2 hover:bg-primary hover:text-white transition-colors">发送消息</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="py-8 text-center text-xs text-neutral">
+    <p>© 2025 个人作品集 | 图书编辑 & 内容策划</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // 导航菜单切换
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // 导航栏滚动效果
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('py-2', 'shadow-sm');
+        navbar.classList.remove('py-4');
+      } else {
+        navbar.classList.add('py-4');
+        navbar.classList.remove('py-2', 'shadow-sm');
+      }
+    });
+    
+    // 滚动淡入效果
+    const fadeElements = document.querySelectorAll('.section-fade');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    fadeElements.forEach(element => {
+      observer.observe(element);
+    });
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 70,
+            behavior: 'smooth'
+          });
+          
+          // 关闭移动端菜单
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
